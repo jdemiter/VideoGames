@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication1.Models;
-using WebApplication1.Models.ManageViewModels;
-using WebApplication1.Services;
+using VideoGames.Models;
+using VideoGames.Models.ManageViewModels;
+using VideoGames.Services;
 
-namespace WebApplication1.Controllers
+namespace VideoGames.Controllers
 {
     [Authorize]
     public class ManageController : Controller

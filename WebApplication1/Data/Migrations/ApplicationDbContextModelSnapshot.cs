@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using VideoGames.Data;
 
-namespace WebApplication1.Data.Migrations
+namespace VideoGames.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -15,7 +13,7 @@ namespace WebApplication1.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc3")
+                .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -125,7 +123,31 @@ namespace WebApplication1.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("VideoGames.Models.VideoGame", b =>
+                {
+                    b.Property<int>("VideoGameID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Genre");
+
+                    b.Property<string>("Platform");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("Publisher");
+
+                    b.Property<string>("Rating");
+
+                    b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("VideoGameID");
+
+                    b.ToTable("VideoGame");
+                });
+
+            modelBuilder.Entity("VideoGames.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -184,7 +206,7 @@ namespace WebApplication1.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Models.ApplicationUser")
+                    b.HasOne("VideoGames.Models.ApplicationUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -192,7 +214,7 @@ namespace WebApplication1.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Models.ApplicationUser")
+                    b.HasOne("VideoGames.Models.ApplicationUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -205,7 +227,7 @@ namespace WebApplication1.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("WebApplication1.Models.ApplicationUser")
+                    b.HasOne("VideoGames.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

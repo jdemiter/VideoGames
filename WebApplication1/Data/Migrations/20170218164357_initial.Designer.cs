@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using VideoGames.Data;
 
 namespace VideoGames.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("00000000000000_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20170218164357_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc3")
+                .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -124,6 +122,30 @@ namespace VideoGames.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("VideoGames.Models.VideoGame", b =>
+                {
+                    b.Property<int>("VideoGameID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Genre");
+
+                    b.Property<string>("Platform");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("Publisher");
+
+                    b.Property<string>("Rating");
+
+                    b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("VideoGameID");
+
+                    b.ToTable("VideoGame");
                 });
 
             modelBuilder.Entity("VideoGames.Models.ApplicationUser", b =>

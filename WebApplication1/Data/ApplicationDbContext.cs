@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
+using VideoGames.Models;
+using VideoGames.Models;
 
-namespace WebApplication1.Data
+namespace VideoGames.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -22,5 +23,7 @@ namespace WebApplication1.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<VideoGame> VideoGame { get; set; }
     }
 }

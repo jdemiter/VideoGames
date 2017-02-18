@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApplication1.Data;
-using WebApplication1.Models;
-using WebApplication1.Services;
+using VideoGames.Data;
+using VideoGames.Models;
+using VideoGames.Services;
 
-namespace WebApplication1
+namespace VideoGames
 {
     public class Startup
     {
@@ -90,8 +90,9 @@ namespace WebApplication1
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=VideoGames}/{action=Index}/{id?}");
             });
+            VideoGameSeedData.Initialize(app.ApplicationServices);
         }
     }
 }
